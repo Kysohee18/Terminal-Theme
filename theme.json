@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "console_title_template": " {{ .Folder }} :: {{if .Root}}Admin{{end}}",
+  "palette": {
+    "main-bg": "#1a1b26",
+    "htb-green": "#9ece6a",
+    "tokyo-red": "#f7768e",
+    "tokyo-blue": "#7aa2f7",
+    "tokyo-magenta": "#bb9af7",
+    "tokyo-cyan": "#7dcfff",
+    "tokyo-white": "#c0caf5",
+    "tokyo-grey": "#565f89",
+    "terminal-yellow": "#e0af68",
+    "t-background": "p:main-bg"
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "background": "transparent",
+          "foreground": "p:htb-green",
+          "template": "\ufb12 "
+        },
+        {
+          "type": "path",
+          "style": "plain",
+          "foreground": "p:tokyo-cyan",
+          "options": {
+            "style": "folder"
+          },
+          "template": "<b>{{ .Path }}</b> "
+        },
+        {
+          "type": "git",
+          "style": "plain",
+          "foreground": "p:tokyo-magenta",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}p:tokyo-red{{ end }}",
+            "{{ if gt .Ahead 0 }}p:tokyo-blue{{ end }}",
+            "{{ if gt .Behind 0 }}p:tokyo-white{{ end }}"
+          ],
+          "template": " <p:tokyo-grey>\ue725</> {{ .HEAD}} ",
+          "options": {
+            "fetch_status": true
+          }
+        },
+        {
+          "type": "status",
+          "style": "plain",
+          "foreground": "p:tokyo-red",
+          "template": " \uf00d"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "type": "node",
+          "style": "plain",
+          "foreground": "p:htb-green",
+          "template": "\ue718 {{ .Full }} "
+        },
+        {
+          "type": "python",
+          "style": "plain",
+          "foreground": "p:terminal-yellow",
+          "template": "\uE235 {{ .Full }} "
+        },
+        {
+          "type": "go",
+          "style": "plain",
+          "foreground": "p:tokyo-cyan",
+          "template": "\uFCD1 {{ .Full }} "
+        },
+        {
+          "type": "time",
+          "style": "plain",
+          "foreground": "p:tokyo-grey",
+          "template": "\uf43a {{ .CurrentDate | date \"15:04\" }} "
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "p:htb-green",
+          "style": "plain",
+          "template": "\u27ac ",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "secondary_prompt": {
+    "background": "transparent",
+    "foreground": "p:tokyo-blue",
+    "template": "\u279c "
+  },
+  "transient_prompt": {
+    "background": "p:t-background",
+    "foreground": "p:htb-green",
+    "template": "\u27ac "
+  },
+  "final_space": true,
+  "version": 4,
+  "terminal_background": "p:t-background"
+}
