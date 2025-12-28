@@ -22,7 +22,7 @@
           "style": "plain",
           "background": "transparent",
           "foreground": "p:htb-green",
-          "template": "\ufb12 "
+          "template": "\uf0e7 "
         },
         {
           "type": "path",
@@ -42,7 +42,7 @@
             "{{ if gt .Ahead 0 }}p:tokyo-blue{{ end }}",
             "{{ if gt .Behind 0 }}p:tokyo-white{{ end }}"
           ],
-          "template": " <p:tokyo-grey>\ue725</> {{ .HEAD}} ",
+          "template": " <p:tokyo-grey>\uf418</> {{ .HEAD}} ",
           "options": {
             "fetch_status": true
           }
@@ -61,6 +61,12 @@
       "overflow": "hide",
       "segments": [
         {
+          "type": "cpp",
+          "style": "plain",
+          "foreground": "p:tokyo-blue",
+          "template": "\ue61d {{ .Full }} "
+        },
+        {
           "type": "node",
           "style": "plain",
           "foreground": "p:htb-green",
@@ -73,16 +79,19 @@
           "template": "\uE235 {{ .Full }} "
         },
         {
-          "type": "go",
+          "type": "sysinfo",
           "style": "plain",
-          "foreground": "p:tokyo-cyan",
-          "template": "\uFCD1 {{ .Full }} "
+          "foreground": "p:tokyo-magenta",
+          "template": "\uf85a {{ round .PhysicalPercentUsed 0 }}% ",
+          "options": {
+            "precision": 0
+          }
         },
         {
           "type": "time",
           "style": "plain",
           "foreground": "p:tokyo-grey",
-          "template": "\uf43a {{ .CurrentDate | date \"15:04\" }} "
+          "template": "\uf017 {{ .CurrentDate | date \"15:04\" }} "
         }
       ],
       "type": "prompt"
